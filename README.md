@@ -1,6 +1,6 @@
 # CWE-Expert
 
-A CWE-Expert can be built for free in less than 5 minutes using the CWE Corpus files provided here in different formats.
+A CWE-Expert can be built for free in a browser in less than 5 minutes using the CWE Corpus files provided here in different formats.
 
 This repo contains
 1. Example prompts to be used with the CWE Expert.
@@ -12,13 +12,26 @@ This repo contains
 
 
 
+## Table of Contents
+- [CWE-Expert](#cwe-expert)
+  - [Table of Contents](#table-of-contents)
+  - [Example Prompts](#example-prompts)
+  - [LLM Tool NotebookLM](#llm-tool-notebooklm)
+  - [CWE Specification Corpus](#cwe-specification-corpus)
+    - [Mapping](#mapping)
+    - [Unstructured text: markdown](#unstructured-text-markdown)
+    - [Structured text: jsonl](#structured-text-jsonl)
+    - [Unstructured text: pdf](#unstructured-text-pdf)
+
+
+
 ## Example Prompts
 
 [questions.md](prompts/questions.md) contains example prompts or questions.
 
 This gives an idea of the types of questions that can be asked of the CWE Expert. **Ask whatever you want!**
 
-### LLM Tool
+## LLM Tool NotebookLM
 
 NoteBookLM is used in this example.
 
