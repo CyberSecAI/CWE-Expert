@@ -1,6 +1,6 @@
 # CWE-Expert
 
-A CWE-Expert can be built for free in a browser in less than 5 minutes using the instruction and CWE Corpus files provided here.
+A CWE-Expert can be built for free in a browser in less than 1 minute using the instruction and CWE Corpus files provided here.
 
 This repo contains
 
@@ -36,6 +36,11 @@ The stripped MITRE CWE specification corpus is available as
 1. Structured text: [jsonl](./CWE_corpus/jsonl)
 2. Unstructured text: [markdown](./CWE_corpus/markdown)
 3. Unstructured text: [pdf](.CWE_corpus/pdf)
+
+> [!NOTE]
+> CWE Version latest as at December 2024 is used as the input CWE specification:
+> - JSON CWE Version 4.1**5** [https://github.com/CWE-CAPEC/REST-API-wg/blob/main/json_repo/cwe.json](https://raw.githubusercontent.com/CWE-CAPEC/REST-API-wg/refs/heads/main/json_repo/cwe.json)
+> - PDF CWE Version 4.1**6** https://cwe.mitre.org/data/published/cwe_latest.pdf 
 
 
 ### Mapping

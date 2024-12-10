@@ -1,7 +1,10 @@
 
 #https://fosspost.org/divide-pdf-small-chunks-linux-command-line
 
-# Usage pagesper=300 file=./data_in/cwe_latest.pdf ./pdfsplit.sh
+# Usage 
+# cd ./CWE_corpus/pdf/
+# pagesper=300 file=../data_in/cwe_latest.pdf ../pdfsplit.sh
+# mv ../../data_in  
 
 number=$(pdfinfo -- "$file" 2> /dev/null | awk '$1 == "Pages:" {print $2}')
 
