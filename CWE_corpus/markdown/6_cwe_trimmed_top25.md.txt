@@ -1920,9 +1920,9 @@ While XSS might seem simple to prevent, web browsers vary so widely in how they 
 
 ## Observed Examples
 
-CVE-2007-5727: Denylist only removes <SCRIPT> tag.
+CVE-2007-5727: Denylist only removes script tag.
 
-CVE-2006-3617: Denylist only removes <SCRIPT> tag.
+CVE-2006-3617: Denylist only removes script tag.
 
 CVE-2006-4308: Denylist only checks "javascript:" tag
 

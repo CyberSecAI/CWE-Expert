@@ -1,11 +1,12 @@
 # CWE-Expert
 
-A CWE-Expert can be built for free in a browser in less than 5 minutes using the CWE Corpus files provided here in different formats.
+A CWE-Expert can be built for free in a browser in less than 5 minutes using the instruction and CWE Corpus files provided here.
 
 This repo contains
-1. Example prompts to be used with the CWE Expert.
-2. How to build a CWE Expert
-3. The MITRE CWE specification stripped down to the minimum required for CWE mapping as the corpus for the CWE Expert.
+
+1. The MITRE CWE specification stripped down to the minimum required for CWE mapping as the corpus for the CWE Expert.
+2. Instructions on how to build a CWE Expert
+3. Example prompts/questions to be used with the CWE Expert.
 
 > [!NOTE]
 > The code that creates the CWE Specification Corpus is [cwe_json.ipynb](./cwe_json.ipynb).
@@ -15,30 +16,14 @@ This repo contains
 ## Table of Contents
 - [CWE-Expert](#cwe-expert)
   - [Table of Contents](#table-of-contents)
-  - [Example Prompts](#example-prompts)
-  - [LLM Tool NotebookLM](#llm-tool-notebooklm)
   - [CWE Specification Corpus](#cwe-specification-corpus)
     - [Mapping](#mapping)
     - [Unstructured text: markdown](#unstructured-text-markdown)
     - [Structured text: jsonl](#structured-text-jsonl)
     - [Unstructured text: pdf](#unstructured-text-pdf)
+  - [LLM Tool NotebookLM](#llm-tool-notebooklm)
+  - [Example Prompts](#example-prompts)
 
-
-
-## Example Prompts
-
-[questions.md](prompts/questions.md) contains example prompts or questions.
-
-This gives an idea of the types of questions that can be asked of the CWE Expert. **Ask whatever you want!**
-
-## LLM Tool NotebookLM
-
-NoteBookLM is used in this example.
-
-> [!TIP]
-> The notebook can be shared with other users via email (using the share button top right) to allow them to use the notebook. See https://support.google.com/notebooklm/answer/14276471?hl=en.
-> 
-> Sharing is via a user's email.
 
 
 
@@ -116,3 +101,26 @@ The full [CWE specification pdf](https://cwe.mitre.org/data/published/cwe_latest
 > - it is less structured than markdown or json
 
 
+
+## LLM Tool NotebookLM
+
+NoteBookLM is used in this example.
+
+1. Open https://notebooklm.google.com/ in a broswer
+2. Click Sources
+3. Upload all files in the [markdown](./CWE_corpus/markdown) directory
+
+
+> [!TIP]
+> The notebook can be shared with other users via email (using the share button top right) to allow them to use the notebook. See https://support.google.com/notebooklm/answer/14276471?hl=en.
+> 
+> Sharing is via a user's email.
+
+
+
+
+## Example Prompts
+
+[questions.md](prompts/questions.md) contains example prompts or questions.
+
+This gives an idea of the types of questions that can be asked of the CWE Expert. **Ask whatever you want!**

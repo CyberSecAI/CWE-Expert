@@ -4042,7 +4042,7 @@ CVE-2021-41531: NLnet Labs Routinator prior to 0.10.0 produces invalid RTR paylo
 
 The product receives an input value that is used as a resource identifier or other type of reference, but it does not validate or incorrectly validates that the input is equivalent to a potentially-unsafe value.
 
-Attackers can sometimes bypass input validation schemes by finding inputs that appear to be safe, but will be dangerous when processed at a lower layer or by a downstream component. For example, a simple XSS protection mechanism might try to validate that an input has no "<script>" tags using case-sensitive matching, but since HTML is case-insensitive when processed by web browsers, an attacker could inject "<ScrIpT>" and trigger XSS.
+Attackers can sometimes bypass input validation schemes by finding inputs that appear to be safe, but will be dangerous when processed at a lower layer or by a downstream component. For example, a simple XSS protection mechanism might try to validate that an input has no script tags using case-sensitive matching, but since HTML is case-insensitive when processed by web browsers, an attacker could inject script and trigger XSS.
 
 ## Observed Examples
 
@@ -6975,7 +6975,7 @@ CVE-2002-0784: chain: HTTP server protects against ".." but allows "." variants 
 
 CVE-2005-2169: MFV. Regular expression intended to protect against directory traversal reduces ".../...//" to "../".
 
-CVE-2001-1157: XSS protection mechanism strips a <script> sequence that is nested in another <script> sequence.
+CVE-2001-1157: XSS protection mechanism strips a script sequence that is nested in another script sequence.
 
 # CWE-183 Permissive List of Allowed Inputs
 
@@ -7023,7 +7023,7 @@ CVE-2004-0595: XSS filter doesn't filter null characters before looking for dang
 
 CVE-2005-3287: Web-based mail product doesn't restrict dangerous extensions such as ASPX on a web server, even though others are prohibited.
 
-CVE-2004-2351: Resultant XSS when only <script> and <style> are checked.
+CVE-2004-2351: Resultant XSS when only script and style are checked.
 
 CVE-2005-2959: Privileged program does not clear sensitive environment variables that are used by bash. Overlaps multiple interpretation error.
 
