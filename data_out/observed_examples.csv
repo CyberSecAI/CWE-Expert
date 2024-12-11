@@ -126,6 +126,7 @@ CWE-1241,CVE-2021-3692,PHP framework uses mt_rand() function (Marsenne Twister) 
 CWE-1244,CVE-2019-18827,"After ROM code execution, JTAG access is disabled. But before the ROM code is executed, JTAG access is possible, allowing a user full system access. This allows a user to modify the boot flow and successfully bypass the secure-boot process."
 CWE-1247,CVE-2019-17391,Lack of anti-glitch protections allows an attacker to launch a physical attack to bypass the secure boot and read protected eFuses.
 CWE-1247,CVE-2021-33478,IP communication firmware allows access to a boot shell via certain impulses
+CWE-125,CVE-2023-1018,"The reference implementation code for a Trusted Platform Module does not implement length checks on data, allowing for an attacker to read 2 bytes past the end of a buffer."
 CWE-125,CVE-2020-11899,"Out-of-bounds read in IP stack used in embedded systems, as exploited in the wild per CISA KEV."
 CWE-125,CVE-2014-0160,"Chain: ""Heartbleed"" bug receives an inconsistent length parameter (CWE-130) enabling an out-of-bounds read (CWE-126), returning memory that could include private cryptographic keys and other sensitive data."
 CWE-125,CVE-2021-40985,"HTML conversion package has a buffer under-read, allowing a crash"
@@ -351,12 +352,14 @@ CWE-1391,CVE-2020-27020,"password manager does not generate cryptographically st
 CWE-1391,CVE-2020-8632,"password generator for cloud application has small length value, making it easier for brute-force guessing"
 CWE-1391,CVE-2020-5365,network-attached storage (NAS) system has predictable default passwords for a diagnostics/support account
 CWE-1391,CVE-2020-5248,IT asset management app has a default encryption key that is the same across installations
+CWE-1391,CVE-2018-3825,cloud cluster management product has a default master encryption key
 CWE-1391,CVE-2012-3503,"Installation script has a hard-coded secret token value, allowing attackers to bypass authentication"
 CWE-1391,CVE-2010-2306,"Intrusion Detection System (IDS) uses the same static, private SSL keys for multiple devices and installations, allowing decryption of SSL traffic"
 CWE-1391,CVE-2001-0618,"Residential gateway uses the last 5 digits of the 'Network Name' or SSID as the default WEP key, which allows attackers to get the key by sniffing the SSID, which is sent in the clear"
 CWE-1392,CVE-2022-30270,Remote Terminal Unit (RTU) uses default credentials for some SSH accounts
 CWE-1392,CVE-2021-41192,data visualization/sharing package uses default secret keys or cookie values if they are not specified in environment variables
 CWE-1392,CVE-2021-38759,microcontroller board has default password
+CWE-1392,CVE-2018-3825,cloud cluster management product has a default master encryption key
 CWE-1392,CVE-2010-2306,"Intrusion Detection System (IDS) uses the same static, private SSL keys for multiple devices and installations, allowing decryption of SSL traffic"
 CWE-1393,CVE-2022-30270,Remote Terminal Unit (RTU) uses default credentials for some SSH accounts
 CWE-1393,CVE-2022-2336,OPC Unified Architecture (OPC UA) industrial automation product has a default password
@@ -392,6 +395,9 @@ CWE-1423,CVE-2017-5754,"(Branch Target Injection, BTI, Spectre v2). Shared micro
 CWE-1423,CVE-2022-0001,"(Branch History Injection, BHI, Spectre-BHB). Shared branch history state may allow user-mode code to influence transient execution in the kernel, potentially exposing kernel data over a covert channel."
 CWE-1423,CVE-2021-33149,"(RSB underflow, Retbleed). Shared return stack buffer state may allow code that executes before a prediction barrier to influence transient execution after the prediction barrier, potentially exposing data that is accessible beyond the barrier over a covert channel."
 CWE-1426,CVE-2024-3402,"chain: GUI for ChatGPT API performs input validation but does not properly ""sanitize"" or validate model output data (CWE-1426), leading to XSS (CWE-79)."
+CWE-1427,CVE-2023-32786,"Chain: LLM integration framework has prompt injection (CWE-1427) that allows an attacker to force the service to retrieve data from an arbitrary URL, essentially providing SSRF (CWE-918) and potentially injecting content into downstream tasks."
+CWE-1427,CVE-2024-5184,"ML-based email analysis product uses an API service that allows a malicious user to inject a direct prompt and take over the service logic, forcing it to leak the standard hard-coded system prompts and/or execute unwanted prompts to leak sensitive data."
+CWE-1427,CVE-2024-5565,"Chain: library for generating SQL via LLMs using RAG uses a prompt function to present the user with visualized results, allowing altering of the prompt using prompt injection (CWE-1427) to run arbitrary Python code (CWE-94) instead of the intended visualization code."
 CWE-143,CVE-2004-1982,Carriage returns in subject field allow adding new records to data file.
 CWE-143,CVE-2001-0527,"Attacker inserts carriage returns and ""|"" field separator characters to add new user/privileges."
 CWE-144,CVE-2002-0267,Linebreak in field of PHP script allows admin privileges when written to data file.
@@ -2371,6 +2377,7 @@ CWE-732,CVE-2001-0006,"""Everyone: Full Control"" permissions assigned to a mute
 CWE-732,CVE-2002-0969,"Chain: database product contains buffer overflow that is only reachable through a .ini configuration file - which has ""Everyone: Full Control"" permissions."
 CWE-733,CVE-2008-1685,"C compiler optimization, as allowed by specifications, removes code that is used to perform checks to detect integer overflows."
 CWE-733,CVE-2019-1010006,"Chain: compiler optimization (CWE-733) removes or modifies code used to detect integer overflow (CWE-190), allowing out-of-bounds write (CWE-787)."
+CWE-74,CVE-2024-5184,API service using a large generative AI model allows direct prompt injection to leak hard-coded system prompts or execute other prompts.
 CWE-74,CVE-2022-36069,"Python-based dependency management tool avoids OS command injection when generating Git commands but allows injection of optional arguments with input beginning with a dash (CWE-88), potentially allowing for code execution."
 CWE-74,CVE-1999-0067,"Canonical example of OS command injection. CGI program does not neutralize ""|"" metacharacter when invoking a phonebook program."
 CWE-74,CVE-2022-1509,"injection of sed script syntax (""sed injection"")"
@@ -2484,6 +2491,7 @@ CWE-786,CVE-2007-0886,Buffer underflow resultant from encoded data that triggers
 CWE-786,CVE-2006-6171,"Product sets an incorrect buffer size limit, leading to ""off-by-two"" buffer underflow."
 CWE-786,CVE-2006-4024,"Negative value is used in a memcpy() operation, leading to buffer underflow."
 CWE-786,CVE-2004-2620,Buffer underflow due to mishandled special characters
+CWE-787,CVE-2023-1017,"The reference implementation code for a Trusted Platform Module does not implement length checks on data, allowing for an attacker to write 2 bytes past the end of a buffer."
 CWE-787,CVE-2021-21220,"Chain: insufficient input validation (CWE-20) in browser allows heap corruption (CWE-787), as exploited in the wild per CISA KEV."
 CWE-787,CVE-2021-28664,"GPU kernel driver allows memory corruption because a user can obtain read/write access to read-only pages, as exploited in the wild per CISA KEV."
 CWE-787,CVE-2020-17087,"Chain: integer truncation (CWE-197) causes small buffer allocation (CWE-131) leading to out-of-bounds write (CWE-787) in kernel pool, as exploited in the wild per CISA KEV."
@@ -2879,6 +2887,7 @@ CWE-916,CVE-2002-1657,"Database server uses the username for a salt when encrypt
 CWE-916,CVE-2001-0967,"Server uses a constant salt when encrypting passwords, simplifying brute force attacks."
 CWE-916,CVE-2005-0408,"chain: product generates predictable MD5 hashes using a constant value combined with username, allowing authentication bypass."
 CWE-917,CVE-2021-44228,"Product does not neutralize ${xyz} style expressions, allowing remote code execution. (log4shell vulnerability in log4j)"
+CWE-918,CVE-2023-32786,"Chain: LLM integration framework has prompt injection (CWE-1427) that allows an attacker to force the service to retrieve data from an arbitrary URL, essentially providing SSRF (CWE-918) and potentially injecting content into downstream tasks."
 CWE-918,CVE-2021-26855,"Server Side Request Forgery (SSRF) in mail server, as exploited in the wild per CISA KEV."
 CWE-918,CVE-2021-21973,"Server Side Request Forgery in cloud platform, as exploited in the wild per CISA KEV."
 CWE-918,CVE-2016-4029,"Chain: incorrect validation of intended decimal-based IP address format (CWE-1286) enables parsing of octal or hexadecimal formats (CWE-1389), allowing bypass of an SSRF protection mechanism (CWE-918)."

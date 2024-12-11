@@ -39,7 +39,7 @@ The stripped MITRE CWE specification corpus is available as
 
 > [!NOTE]
 > CWE Version latest as at December 2024 is used as the input CWE specification:
-> - JSON CWE Version 4.1**5** [https://github.com/CWE-CAPEC/REST-API-wg/blob/main/json_repo/cwe.json](https://raw.githubusercontent.com/CWE-CAPEC/REST-API-wg/refs/heads/main/json_repo/cwe.json)
+> - JSON CWE Version 4.1**6** [https://github.com/CWE-CAPEC/REST-API-wg/blob/main/json_repo/cwe.json](https://raw.githubusercontent.com/CWE-CAPEC/REST-API-wg/refs/heads/main/json_repo/cwe.json)
 > - PDF CWE Version 4.1**6** https://cwe.mitre.org/data/published/cwe_latest.pdf 
 
 
@@ -121,7 +121,11 @@ NoteBookLM is used in this example.
 > 
 > Sharing is via a user's email.
 
-
+> [!IMPORTANT]
+> After importing each file to NotebookLM, you should click on each source and look at the end of each source, and compare it to the end of the file imported.
+>
+> This ensures all of the file content is imported!
+> NotebookLM will truncate files silently if it encounters certain content e.g. \"\<script\>\" or \"\<style\>\".
 
 
 ## Example Prompts

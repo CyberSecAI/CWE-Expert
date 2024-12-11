@@ -441,6 +441,8 @@ Software or other automated logic has certain assumptions about what constitutes
 
 ## Observed Examples
 
+CVE-2024-5184: API service using a large generative AI model allows direct prompt injection to leak hard-coded system prompts or execute other prompts.
+
 CVE-2022-36069: Python-based dependency management tool avoids OS command injection when generating Git commands but allows injection of optional arguments with input beginning with a dash (CWE-88), potentially allowing for code execution.
 
 CVE-1999-0067: Canonical example of OS command injection. CGI program does not neutralize "|" metacharacter when invoking a phonebook program.
@@ -2196,6 +2198,8 @@ CVE-2022-0351: Access of Memory Location Before Start of Buffer in GitHub reposi
 The product writes data past the end, or before the beginning, of the intended buffer.
 
 ## Observed Examples
+
+CVE-2023-1017: The reference implementation code for a Trusted Platform Module does not implement length checks on data, allowing for an attacker to write 2 bytes past the end of a buffer.
 
 CVE-2021-21220: Chain: insufficient input validation (CWE-20) in browser allows heap corruption (CWE-787), as exploited in the wild per CISA KEV.
 

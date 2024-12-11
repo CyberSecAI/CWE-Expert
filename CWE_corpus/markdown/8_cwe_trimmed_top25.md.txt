@@ -710,8 +710,6 @@ CVE-2022-36083: JOSE is "JSON Web Almost Everything" - JWA, JWS, JWE, JWT, JWK, 
 
 The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.
 
-If the loop can be influenced by an attacker, this weakness could allow attackers to consume excessive resources such as CPU or memory.
-
 ## Observed Examples
 
 CVE-2022-22224: Chain: an operating system does not properly process malformed Open Shortest Path First (OSPF) Type/Length/Value Identifiers (TLV) (CWE-703), which can cause the process to enter an infinite loop (CWE-835)
@@ -1076,11 +1074,6 @@ CVE-2004-0595: XSS filter doesn't filter null characters before looking for dang
 ## Description
 
 The product does not perform an authorization check when an actor attempts to access a resource or perform an action.
-
-Assuming a user with a given identity, authorization is the process of determining whether that user can access a given resource, based on the user's privileges and any permissions or other access-control specifications that apply to the resource.
-
-
-When access control checks are not applied, users are able to access data or perform actions that they should not be allowed to perform. This can lead to a wide range of problems, including information exposures, denial of service, and arbitrary code execution.
 
 An access control list (ACL) represents who/what has permissions to a given object. Different operating systems implement (ACLs) in different ways. In UNIX, there are three types of permissions: read, write, and execute. Users are divided into three classes for file access: owner, group owner, and all other users where each class has a separate set of rights. In Windows NT, there are four basic types of permissions for files: "No access", "Read access", "Change access", and "Full control". Windows NT extends the concept of three types of users in UNIX to include a list of users and groups along with their associated permissions. A user can create an object (file) and assign specified permissions to that object.
 
@@ -2086,12 +2079,7 @@ CVE-2022-46158: PrestaShop is an open-source e-commerce solution. Versions prior
 
 ## Description
 
-The product performs an authorization check when an actor attempts to access a resource or perform an action, but it does not correctly perform the check. This allows attackers to bypass intended access restrictions.
-
-Assuming a user with a given identity, authorization is the process of determining whether that user can access a given resource, based on the user's privileges and any permissions or other access-control specifications that apply to the resource.
-
-
-When access control checks are incorrectly applied, users are able to access data or perform actions that they should not be allowed to perform. This can lead to a wide range of problems, including information exposures, denial of service, and arbitrary code execution.
+The product performs an authorization check when an actor attempts to access a resource or perform an action, but it does not correctly perform the check.
 
 An access control list (ACL) represents who/what has permissions to a given object. Different operating systems implement (ACLs) in different ways. In UNIX, there are three types of permissions: read, write, and execute. Users are divided into three classes for file access: owner, group owner, and all other users where each class has a separate set of rights. In Windows NT, there are four basic types of permissions for files: "No access", "Read access", "Change access", and "Full control". Windows NT extends the concept of three types of users in UNIX to include a list of users and groups along with their associated permissions. A user can create an object (file) and assign specified permissions to that object.
 

@@ -1041,7 +1041,6 @@
       "Abstraction": "Class",
       "Diagram": "/data/images/CWE-119-Diagram.png",
       "Description": "The product performs operations on a memory buffer, but it reads from or writes to a memory location outside the buffer's intended boundary. This may result in read or write operations on unexpected memory locations that could be linked to other variables, data structures, or internal program data.",
-      "ExtendedDescription": "\n\nCertain languages allow direct addressing of memory locations and do not automatically ensure that these locations are valid for the memory buffer that is being referenced. This can cause read or write operations to be performed on memory locations that may be associated with other variables, data structures, or internal program data.\n",
       "BackgroundDetails": [
         "Certain languages allow direct addressing of memory locations and do not automatically ensure that these locations are valid for the memory buffer that is being referenced."
       ],
@@ -1938,6 +1937,11 @@
         }
       ],
       "ObservedExamples": [
+        {
+          "Reference": "CVE-2023-1018",
+          "Description": "The reference implementation code for a Trusted Platform Module does not implement length checks on data, allowing for an attacker to read 2 bytes past the end of a buffer.",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2023-1018"
+        },
         {
           "Reference": "CVE-2020-11899",
           "Description": "Out-of-bounds read in IP stack used in embedded systems, as exploited in the wild per CISA KEV.",
@@ -4400,6 +4404,11 @@
           "Link": "https://www.cve.org/CVERecord?id=CVE-2020-5248"
         },
         {
+          "Reference": "CVE-2018-3825",
+          "Description": "cloud cluster management product has a default master encryption key",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2018-3825"
+        },
+        {
           "Reference": "CVE-2012-3503",
           "Description": "Installation script has a hard-coded secret token value, allowing attackers to bypass authentication",
           "Link": "https://www.cve.org/CVERecord?id=CVE-2012-3503"
@@ -4441,6 +4450,11 @@
           "Reference": "CVE-2021-38759",
           "Description": "microcontroller board has default password",
           "Link": "https://www.cve.org/CVERecord?id=CVE-2021-38759"
+        },
+        {
+          "Reference": "CVE-2018-3825",
+          "Description": "cloud cluster management product has a default master encryption key",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2018-3825"
         },
         {
           "Reference": "CVE-2010-2306",
@@ -4806,6 +4820,40 @@
             "Comment": "Improper Encoding or Escaping of Output. Use this CWE when the product is expected to encode or escape genAI outputs."
           }
         ]
+      },
+      "1003_view": "No"
+    },
+    {
+      "ID": "1427",
+      "Name": "Improper Neutralization of Input Used for LLM Prompting",
+      "Abstraction": "Base",
+      "Description": "The product uses externally-provided data to build prompts provided to\nlarge language models (LLMs), but the way these prompts are constructed\ncauses the LLM to fail to distinguish between user-supplied inputs and\ndeveloper provided system directives.",
+      "ExtendedDescription": "\n\n When prompts are constructed using externally controllable data, it is often possible to cause an LLM to ignore the original guidance provided by its creators (known as the \"system prompt\") by inserting malicious instructions in plain human language or using bypasses such as special characters or tags. Because LLMs are designed to treat all instructions as legitimate, there is often no way for the model to differentiate between what prompt language is malicious when it performs inference and returns data. Many LLM systems incorporate data from other adjacent products or external data sources like Wikipedia using API calls and retrieval augmented generation (RAG). Any external sources in use that may contain untrusted data should also be considered potentially malicious. \n",
+      "AlternateTerms": [
+        {
+          "Term": "prompt injection",
+          "Description": "attack-oriented term for modifying prompts, whether due to this weakness or other weaknesses"
+        }
+      ],
+      "ObservedExamples": [
+        {
+          "Reference": "CVE-2023-32786",
+          "Description": "Chain: LLM integration framework has prompt injection (CWE-1427) that allows an attacker to force the service to retrieve data from an arbitrary URL, essentially providing SSRF (CWE-918) and potentially injecting content into downstream tasks.",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2023-32786"
+        },
+        {
+          "Reference": "CVE-2024-5184",
+          "Description": "ML-based email analysis product uses an API service that allows a malicious user to inject a direct prompt and take over the service logic, forcing it to leak the standard hard-coded system prompts and/or execute unwanted prompts to leak sensitive data.",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2024-5184"
+        },
+        {
+          "Reference": "CVE-2024-5565",
+          "Description": "Chain: library for generating SQL via LLMs using RAG uses a prompt function to present the user with visualized results, allowing altering of the prompt using prompt injection (CWE-1427) to run arbitrary Python code (CWE-94) instead of the intended visualization code.",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2024-5565"
+        }
+      ],
+      "MappingNotes": {
+        "Usage": "Allowed"
       },
       "1003_view": "No"
     },
@@ -6087,8 +6135,8 @@
       "ID": "184",
       "Name": "Incomplete List of Disallowed Inputs",
       "Abstraction": "Base",
-      "Description": "The product implements a protection mechanism that relies on a list of inputs (or properties of inputs) that are not allowed by policy or otherwise require other action to neutralize before additional processing takes place, but the list is incomplete, leading to resultant weaknesses.",
-      "ExtendedDescription": "Developers often try to protect their products against malicious input by performing tests against inputs that are known to be bad, such as special characters that can invoke new commands. However, such lists often only account for the most well-known bad inputs. Attackers may be able to find other malicious inputs that were not expected by the developer, allowing them to bypass the intended protection mechanism.",
+      "Diagram": "/data/images/CWE-184-Diagram.png",
+      "Description": "The product implements a protection mechanism that relies on a list of inputs (or properties of inputs) that are not allowed by policy or otherwise require other action to neutralize before additional processing takes place, but the list is incomplete.",
       "AlternateTerms": [
         {
           "Term": "Denylist / Deny List",
@@ -7097,8 +7145,8 @@
       "ID": "201",
       "Name": "Insertion of Sensitive Information Into Sent Data",
       "Abstraction": "Base",
+      "Diagram": "/data/images/CWE-201-Diagram.png",
       "Description": "The code transmits data to another actor, but a portion of the data includes sensitive information that should not be accessible to that actor.",
-      "ExtendedDescription": "Sensitive information could include data that is sensitive in and of itself (such as credentials or private messages), or otherwise useful in the further exploitation of the system (such as internal file system structure).",
       "ObservedExamples": [
         {
           "Reference": "CVE-2022-0708",
@@ -10196,7 +10244,8 @@
       "ID": "288",
       "Name": "Authentication Bypass Using an Alternate Path or Channel",
       "Abstraction": "Base",
-      "Description": "A product requires authentication, but the product has an alternate path or channel that does not require authentication.",
+      "Diagram": "/data/images/CWE-288-Diagram.png",
+      "Description": "The product requires authentication, but the product has an alternate path or channel that does not require authentication.",
       "ObservedExamples": [
         {
           "Reference": "CVE-2000-1179",
@@ -11034,7 +11083,8 @@
       "ID": "307",
       "Name": "Improper Restriction of Excessive Authentication Attempts",
       "Abstraction": "Base",
-      "Description": "The product does not implement sufficient measures to prevent multiple failed authentication attempts within a short time frame, making it more susceptible to brute force attacks.",
+      "Diagram": "/data/images/CWE-307-Diagram.png",
+      "Description": "The product does not implement sufficient measures to prevent multiple failed authentication attempts within a short time frame.",
       "ObservedExamples": [
         {
           "Reference": "CVE-2019-0039",
@@ -12562,6 +12612,7 @@
       "ID": "347",
       "Name": "Improper Verification of Cryptographic Signature",
       "Abstraction": "Base",
+      "Diagram": "/data/images/CWE-347-Diagram.png",
       "Description": "The product does not verify, or incorrectly verifies, the cryptographic signature for data.",
       "ObservedExamples": [
         {
@@ -12949,8 +13000,8 @@
       "ID": "359",
       "Name": "Exposure of Private Personal Information to an Unauthorized Actor",
       "Abstraction": "Base",
+      "Diagram": "/data/images/CWE-359-Diagram.png",
       "Description": "The product does not properly prevent a person's private, personal information from being accessed by actors who either (1) are not explicitly authorized to access the information or (2) do not have the implicit consent of the person about whom the information is collected.",
-      "ExtendedDescription": "\n\nThere are many types of sensitive information that products must protect from attackers, including system data, communications, configuration, business secrets, intellectual property, and an individual's personal (private) information. Private personal information may include a password, phone number, geographic location, personal messages, credit card number, etc. Private information is important to consider whether the person is a user of the product, or part of a data set that is processed by the product. An exposure of private information does not necessarily prevent the product from working properly, and in fact the exposure might be intended by the developer, e.g. as part of data sharing with other organizations. However, the exposure of personal private information can still be undesirable or explicitly prohibited by law or regulation.\n\n\nSome types of private information include:\n\n\n  - Government identifiers, such as Social Security Numbers\n\n  - Contact information, such as home addresses and telephone numbers\n\n  - Geographic location - where the user is (or was)\n\n  - Employment history\n\n  - Financial data - such as credit card numbers, salary, bank accounts, and debts\n\n  - Pictures, video, or audio\n\n  - Behavioral patterns - such as web surfing history, when certain activities are performed, etc.\n\n  - Relationships (and types of relationships) with others - family, friends, contacts, etc.\n\n  - Communications - e-mail addresses, private messages, text messages, chat logs, etc.\n\n  - Health - medical conditions, insurance status, prescription records\n\n  - Account passwords and other credentials\n\nSome of this information may be characterized as PII (Personally Identifiable Information), Protected Health Information (PHI), etc. Categories of private information may overlap or vary based on the intended usage or the policies and practices of a particular industry.\n\nSometimes data that is not labeled as private can have a privacy implication in a different context. For example, student identification numbers are usually not considered private because there is no explicit and publicly-available mapping to an individual student's personal information. However, if a school generates identification numbers based on student social security numbers, then the identification numbers should be considered private.\n",
       "AlternateTerms": [
         {
           "Term": "Privacy violation"
@@ -13087,8 +13138,14 @@
       "ID": "362",
       "Name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
       "Abstraction": "Class",
-      "Description": "The product contains a code sequence that can run concurrently with other code, and the code sequence requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence that is operating concurrently.",
-      "ExtendedDescription": "\n\nThis can have security implications when the expected synchronization is in security-critical code, such as recording whether a user is authenticated or modifying important state information that should not be influenced by an outsider.\n\n\nA race condition occurs within concurrent environments, and is effectively a property of a code sequence. Depending on the context, a code sequence may be in the form of a function call, a small number of instructions, a series of program invocations, etc.\n\n\nA race condition violates these properties, which are closely related:\n\n\n  - Exclusivity - the code sequence is given exclusive access to the shared resource, i.e., no other code sequence can modify properties of the shared resource before the original sequence has completed execution.\n\n  - Atomicity - the code sequence is behaviorally atomic, i.e., no other thread or process can concurrently execute the same sequence of instructions (or a subset) against the same resource.\n\nA race condition exists when an \"interfering code sequence\" can still access the shared resource, violating exclusivity. Programmers may assume that certain code sequences execute too quickly to be affected by an interfering code sequence; when they are not, this violates atomicity. For example, the single \"x++\" statement may appear atomic at the code layer, but it is actually non-atomic at the instruction layer, since it involves a read (the original value of x), followed by a computation (x+1), followed by a write (save the result to x).\n\nThe interfering code sequence could be \"trusted\" or \"untrusted.\" A trusted interfering code sequence occurs within the product; it cannot be modified by the attacker, and it can only be invoked indirectly. An untrusted interfering code sequence can be authored directly by the attacker, and typically it is external to the vulnerable product.\n",
+      "Diagram": "/data/images/CWE-362-Diagram.png",
+      "Description": "The product contains a concurrent code sequence that requires temporary, exclusive access to a shared resource, but a timing window exists in which the shared resource can be modified by another code sequence operating concurrently.",
+      "ExtendedDescription": "\n\nA race condition occurs within concurrent environments, and it is effectively a property of a code sequence. Depending on the context, a code sequence may be in the form of a function call, a small number of instructions, a series of program invocations, etc.\n\n\nA race condition violates these properties, which are closely related:\n\n\n  - Exclusivity - the code sequence is given exclusive access to the shared resource, i.e., no other code sequence can modify properties of the shared resource before the original sequence has completed execution.\n\n  - Atomicity - the code sequence is behaviorally atomic, i.e., no other thread or process can concurrently execute the same sequence of instructions (or a subset) against the same resource.\n\nA race condition exists when an \"interfering code sequence\" can still access the shared resource, violating exclusivity.\n\nThe interfering code sequence could be \"trusted\" or \"untrusted.\" A trusted interfering code sequence occurs within the product; it cannot be modified by the attacker, and it can only be invoked indirectly. An untrusted interfering code sequence can be authored directly by the attacker, and typically it is external to the vulnerable product.\n",
+      "AlternateTerms": [
+        {
+          "Term": "Race Condition"
+        }
+      ],
       "ObservedExamples": [
         {
           "Reference": "CVE-2022-29527",
@@ -16577,7 +16634,7 @@
       "ID": "467",
       "Name": "Use of sizeof() on a Pointer Type",
       "Abstraction": "Variant",
-      "Description": "The code calls sizeof() on a malloced pointer type, which always returns the wordsize/8. This can produce an unexpected result if the programmer intended to determine how much memory has been allocated.",
+      "Description": "The code calls sizeof() on a pointer type, which can be an incorrect calculation if the programmer intended to determine the size of the data that is being pointed to.",
       "ExtendedDescription": "The use of sizeof() on a pointer can sometimes generate useful information. An obvious case is to find out the wordsize on a platform. More often than not, the appearance of sizeof(pointer) indicates a bug.",
       "MappingNotes": {
         "Usage": "Allowed"
@@ -17438,8 +17495,8 @@
       "ID": "502",
       "Name": "Deserialization of Untrusted Data",
       "Abstraction": "Base",
-      "Description": "The product deserializes untrusted data without sufficiently verifying that the resulting data will be valid.",
-      "ExtendedDescription": "\n\nIt is often convenient to serialize objects for communication or to save them for later use. However, deserialized data or code can often be modified without using the provided accessor functions if it does not use cryptography to protect itself. Furthermore, any cryptography would still be client-side security -- which is a dangerous security assumption.\n\n\nData that is untrusted can not be trusted to be well-formed.\n\n\nWhen developers place no restrictions on \"gadget chains,\" or series of instances and method invocations that can self-execute during the deserialization process (i.e., before the object is returned to the caller), it is sometimes possible for attackers to leverage them to perform unauthorized actions, like generating a shell.\n",
+      "Diagram": "/data/images/CWE-502-Diagram.png",
+      "Description": "The product deserializes untrusted data without sufficiently ensuring that the resulting data will be valid.",
       "BackgroundDetails": [
         "Serialization and deserialization refer to the process of taking program-internal object-related data, packaging it in a way that allows the data to be externally stored or transferred (\"serialization\"), then extracting the serialized data to reconstruct the original object (\"deserialization\")."
       ],
@@ -17875,8 +17932,8 @@
       "ID": "532",
       "Name": "Insertion of Sensitive Information into Log File",
       "Abstraction": "Base",
-      "Description": "Information written to log files can be of a sensitive nature and give valuable guidance to an attacker or expose sensitive user information.",
-      "ExtendedDescription": "\n\nWhile logging all information may be helpful during development stages, it is important that logging levels be set appropriately before a product ships so that sensitive user data and system information are not accidentally exposed to potential attackers.\n\n\nDifferent log files may be produced and stored for:\n\n\n  - Server log files (e.g. server.log). This can give information on whatever application left the file. Usually this can give full path names and system information, and sometimes usernames and passwords.\n\n  - log files that are used for debugging\n\n",
+      "Diagram": "/data/images/CWE-532-Diagram.png",
+      "Description": "The product writes sensitive information to a log file.",
       "ObservedExamples": [
         {
           "Reference": "CVE-2017-9615",
@@ -18953,8 +19010,8 @@
       "ID": "601",
       "Name": "URL Redirection to Untrusted Site ('Open Redirect')",
       "Abstraction": "Base",
-      "Description": "A web application accepts a user-controlled input that specifies a link to an external site, and uses that link in a Redirect. This simplifies phishing attacks.",
-      "ExtendedDescription": "An http parameter may contain a URL value and could cause the web application to redirect the request to the specified URL. By modifying the URL value to a malicious site, an attacker may successfully launch a phishing scam and steal user credentials. Because the server name in the modified link is identical to the original site, phishing attempts have a more trustworthy appearance. Whether this issue poses a vulnerability will be subject to the intended behavior of the application. For example, a search engine might intentionally provide redirects to arbitrary URLs.",
+      "Diagram": "/data/images/CWE-601-Diagram.png",
+      "Description": "The web application accepts a user-controlled input that specifies a link to an external site, and uses that link in a redirect.",
       "BackgroundDetails": [
         "Phishing is a general term for deceptive attempts to coerce private information from users that will be used for identity theft."
       ],
@@ -18967,6 +19024,9 @@
         },
         {
           "Term": "Cross-domain Redirect"
+        },
+        {
+          "Term": "Unvalidated Redirect"
         }
       ],
       "ObservedExamples": [
@@ -21929,6 +21989,11 @@
       "ExtendedDescription": "Software or other automated logic has certain assumptions about what constitutes data and control respectively. It is the lack of verification of these assumptions for user-controlled input that leads to injection problems. Injection problems encompass a wide variety of issues -- all mitigated in very different ways and usually attempted in order to alter the control flow of the process. For this reason, the most effective way to discuss these weaknesses is to note the distinct features that classify them as injection weaknesses. The most important issue to note is that all injection problems share one thing in common -- i.e., they allow for the injection of control plane data into the user-controlled data plane. This means that the execution of the process may be altered by sending code in through legitimate data channels, using no other mechanism. While buffer overflows, and many other flaws, involve the use of some further issue to gain execution, injection problems need only for the data to be parsed.",
       "ObservedExamples": [
         {
+          "Reference": "CVE-2024-5184",
+          "Description": "API service using a large generative AI model allows direct prompt injection to leak hard-coded system prompts or execute other prompts.",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2024-5184"
+        },
+        {
           "Reference": "CVE-2022-36069",
           "Description": "Python-based dependency management tool avoids OS command injection when generating Git commands but allows injection of optional arguments with input beginning with a dash (CWE-88), potentially allowing for code execution.",
           "Link": "https://www.cve.org/CVERecord?id=CVE-2022-36069"
@@ -23043,6 +23108,11 @@
         }
       ],
       "ObservedExamples": [
+        {
+          "Reference": "CVE-2023-1017",
+          "Description": "The reference implementation code for a Trusted Platform Module does not implement length checks on data, allowing for an attacker to write 2 bytes past the end of a buffer.",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2023-1017"
+        },
         {
           "Reference": "CVE-2021-21220",
           "Description": "Chain: insufficient input validation (CWE-20) in browser allows heap corruption (CWE-787), as exploited in the wild per CISA KEV.",
@@ -24519,8 +24589,8 @@
       "ID": "835",
       "Name": "Loop with Unreachable Exit Condition ('Infinite Loop')",
       "Abstraction": "Base",
+      "Diagram": "/data/images/CWE-835-Diagram.png",
       "Description": "The product contains an iteration or loop with an exit condition that cannot be reached, i.e., an infinite loop.",
-      "ExtendedDescription": "If the loop can be influenced by an attacker, this weakness could allow attackers to consume excessive resources such as CPU or memory.",
       "ObservedExamples": [
         {
           "Reference": "CVE-2022-22224",
@@ -24946,8 +25016,8 @@
       "ID": "862",
       "Name": "Missing Authorization",
       "Abstraction": "Class",
+      "Diagram": "/data/images/CWE-862-Diagram.png",
       "Description": "The product does not perform an authorization check when an actor attempts to access a resource or perform an action.",
-      "ExtendedDescription": "\n\nAssuming a user with a given identity, authorization is the process of determining whether that user can access a given resource, based on the user's privileges and any permissions or other access-control specifications that apply to the resource.\n\n\nWhen access control checks are not applied, users are able to access data or perform actions that they should not be allowed to perform. This can lead to a wide range of problems, including information exposures, denial of service, and arbitrary code execution.\n",
       "BackgroundDetails": [
         "An access control list (ACL) represents who/what has permissions to a given object. Different operating systems implement (ACLs) in different ways. In UNIX, there are three types of permissions: read, write, and execute. Users are divided into three classes for file access: owner, group owner, and all other users where each class has a separate set of rights. In Windows NT, there are four basic types of permissions for files: \"No access\", \"Read access\", \"Change access\", and \"Full control\". Windows NT extends the concept of three types of users in UNIX to include a list of users and groups along with their associated permissions. A user can create an object (file) and assign specified permissions to that object."
       ],
@@ -25078,8 +25148,8 @@
       "ID": "863",
       "Name": "Incorrect Authorization",
       "Abstraction": "Class",
-      "Description": "The product performs an authorization check when an actor attempts to access a resource or perform an action, but it does not correctly perform the check. This allows attackers to bypass intended access restrictions.",
-      "ExtendedDescription": "\n\nAssuming a user with a given identity, authorization is the process of determining whether that user can access a given resource, based on the user's privileges and any permissions or other access-control specifications that apply to the resource.\n\n\nWhen access control checks are incorrectly applied, users are able to access data or perform actions that they should not be allowed to perform. This can lead to a wide range of problems, including information exposures, denial of service, and arbitrary code execution.\n",
+      "Diagram": "/data/images/CWE-863-Diagram",
+      "Description": "The product performs an authorization check when an actor attempts to access a resource or perform an action, but it does not correctly perform the check.",
       "BackgroundDetails": [
         "An access control list (ACL) represents who/what has permissions to a given object. Different operating systems implement (ACLs) in different ways. In UNIX, there are three types of permissions: read, write, and execute. Users are divided into three classes for file access: owner, group owner, and all other users where each class has a separate set of rights. In Windows NT, there are four basic types of permissions for files: \"No access\", \"Read access\", \"Change access\", and \"Full control\". Windows NT extends the concept of three types of users in UNIX to include a list of users and groups along with their associated permissions. A user can create an object (file) and assign specified permissions to that object."
       ],
@@ -25957,15 +26027,24 @@
       "ID": "918",
       "Name": "Server-Side Request Forgery (SSRF)",
       "Abstraction": "Base",
+      "Diagram": "/data/images/CWE-918-Diagram.png",
       "Description": "The web server receives a URL or similar request from an upstream component and retrieves the contents of this URL, but it does not sufficiently ensure that the request is being sent to the expected destination.",
-      "ExtendedDescription": "By providing URLs to unexpected hosts or ports, attackers can make it appear that the server is sending the request, possibly bypassing access controls such as firewalls that prevent the attackers from accessing the URLs directly. The server can be used as a proxy to conduct port scanning of hosts in internal networks, use other URLs such as that can access documents on the system (using file://), or use other protocols such as gopher:// or tftp://, which may provide greater control over the contents of requests.",
       "AlternateTerms": [
         {
           "Term": "XSPA",
           "Description": "Cross Site Port Attack"
+        },
+        {
+          "Term": "SSRF",
+          "Description": "Server-Side Request Forgery"
         }
       ],
       "ObservedExamples": [
+        {
+          "Reference": "CVE-2023-32786",
+          "Description": "Chain: LLM integration framework has prompt injection (CWE-1427) that allows an attacker to force the service to retrieve data from an arbitrary URL, essentially providing SSRF (CWE-918) and potentially injecting content into downstream tasks.",
+          "Link": "https://www.cve.org/CVERecord?id=CVE-2023-32786"
+        },
         {
           "Reference": "CVE-2021-26855",
           "Description": "Server Side Request Forgery (SSRF) in mail server, as exploited in the wild per CISA KEV.",
@@ -26338,7 +26417,7 @@
         }
       ],
       "MappingNotes": {
-        "Usage": "Allowed"
+        "Usage": "Allowed-with-Review"
       },
       "1003_view": "Yes"
     },

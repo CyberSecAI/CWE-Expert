@@ -965,8 +965,6 @@ CVE-2019-6260: Baseboard Management Controller (BMC) device implements Advanced 
 
 The product performs operations on a memory buffer, but it reads from or writes to a memory location outside the buffer's intended boundary. This may result in read or write operations on unexpected memory locations that could be linked to other variables, data structures, or internal program data.
 
-Certain languages allow direct addressing of memory locations and do not automatically ensure that these locations are valid for the memory buffer that is being referenced. This can cause read or write operations to be performed on memory locations that may be associated with other variables, data structures, or internal program data.
-
 Certain languages allow direct addressing of memory locations and do not automatically ensure that these locations are valid for the memory buffer that is being referenced.
 
 ## Observed Examples
@@ -2754,6 +2752,8 @@ Many of these attacker scenarios can be realized by leveraging separate vulnerab
 The product reads data past the end, or before the beginning, of the intended buffer.
 
 ## Observed Examples
+
+CVE-2023-1018: The reference implementation code for a Trusted Platform Module does not implement length checks on data, allowing for an attacker to read 2 bytes past the end of a buffer.
 
 CVE-2020-11899: Out-of-bounds read in IP stack used in embedded systems, as exploited in the wild per CISA KEV.
 
@@ -5880,6 +5880,8 @@ CVE-2020-5365: network-attached storage (NAS) system has predictable default pas
 
 CVE-2020-5248: IT asset management app has a default encryption key that is the same across installations
 
+CVE-2018-3825: cloud cluster management product has a default master encryption key
+
 CVE-2012-3503: Installation script has a hard-coded secret token value, allowing attackers to bypass authentication
 
 CVE-2010-2306: Intrusion Detection System (IDS) uses the same static, private SSL keys for multiple devices and installations, allowing decryption of SSL traffic
@@ -5921,6 +5923,8 @@ CVE-2022-30270: Remote Terminal Unit (RTU) uses default credentials for some SSH
 CVE-2021-41192: data visualization/sharing package uses default secret keys or cookie values if they are not specified in environment variables
 
 CVE-2021-38759: microcontroller board has default password
+
+CVE-2018-3825: cloud cluster management product has a default master encryption key
 
 CVE-2010-2306: Intrusion Detection System (IDS) uses the same static, private SSL keys for multiple devices and installations, allowing decryption of SSL traffic
 
@@ -6233,6 +6237,25 @@ The product invokes a generative AI/ML
 ## Observed Examples
 
 CVE-2024-3402: chain: GUI for ChatGPT API performs input validation but does not properly "sanitize" or validate model output data (CWE-1426), leading to XSS (CWE-79).
+
+# CWE-1427 Improper Neutralization of Input Used for LLM Prompting
+
+## Description
+
+The product uses externally-provided data to build prompts provided to
+large language models (LLMs), but the way these prompts are constructed
+causes the LLM to fail to distinguish between user-supplied inputs and
+developer provided system directives.
+
+When prompts are constructed using externally controllable data, it is often possible to cause an LLM to ignore the original guidance provided by its creators (known as the "system prompt") by inserting malicious instructions in plain human language or using bypasses such as special characters or tags. Because LLMs are designed to treat all instructions as legitimate, there is often no way for the model to differentiate between what prompt language is malicious when it performs inference and returns data. Many LLM systems incorporate data from other adjacent products or external data sources like Wikipedia using API calls and retrieval augmented generation (RAG). Any external sources in use that may contain untrusted data should also be considered potentially malicious.
+
+## Observed Examples
+
+CVE-2023-32786: Chain: LLM integration framework has prompt injection (CWE-1427) that allows an attacker to force the service to retrieve data from an arbitrary URL, essentially providing SSRF (CWE-918) and potentially injecting content into downstream tasks.
+
+CVE-2024-5184: ML-based email analysis product uses an API service that allows a malicious user to inject a direct prompt and take over the service logic, forcing it to leak the standard hard-coded system prompts and/or execute unwanted prompts to leak sensitive data.
+
+CVE-2024-5565: Chain: library for generating SQL via LLMs using RAG uses a prompt function to present the user with visualized results, allowing altering of the prompt using prompt injection (CWE-1427) to run arbitrary Python code (CWE-94) instead of the intended visualization code.
 
 # CWE-143 Improper Neutralization of Record Delimiters
 
@@ -7005,9 +7028,7 @@ CVE-2022-25237: Bonita Web 2021.2 is affected by a authentication/authorization 
 
 ## Description
 
-The product implements a protection mechanism that relies on a list of inputs (or properties of inputs) that are not allowed by policy or otherwise require other action to neutralize before additional processing takes place, but the list is incomplete, leading to resultant weaknesses.
-
-Developers often try to protect their products against malicious input by performing tests against inputs that are known to be bad, such as special characters that can invoke new commands. However, such lists often only account for the most well-known bad inputs. Attackers may be able to find other malicious inputs that were not expected by the developer, allowing them to bypass the intended protection mechanism.
+The product implements a protection mechanism that relies on a list of inputs (or properties of inputs) that are not allowed by policy or otherwise require other action to neutralize before additional processing takes place, but the list is incomplete.
 
 ## Observed Examples
 

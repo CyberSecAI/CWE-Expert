@@ -2180,6 +2180,16 @@
 
 ---
 
+## CWE-1427 Improper Neutralization of Input Used for LLM Prompting
+
+### Mapping Details
+
+- Usage: Allowed
+- Abstraction: Base
+- 1003 view: No
+
+---
+
 ## CWE-143 Improper Neutralization of Record Delimiters
 
 ### Mapping Details
@@ -8704,7 +8714,7 @@
 
 ### Mapping Details
 
-- Usage: Allowed
+- Usage: Allowed-with-Review
 - Abstraction: Base
 - 1003 view: Yes
 

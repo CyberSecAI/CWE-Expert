@@ -1911,8 +1911,6 @@ CVE-2021-3677: A flaw was found in postgresql. A purpose-crafted query can read 
 
 The code transmits data to another actor, but a portion of the data includes sensitive information that should not be accessible to that actor.
 
-Sensitive information could include data that is sensitive in and of itself (such as credentials or private messages), or otherwise useful in the further exploitation of the system (such as internal file system structure).
-
 ## Observed Examples
 
 CVE-2022-0708: Collaboration platform does not clear team emails in a response, allowing leak of email addresses
@@ -5447,7 +5445,7 @@ CVE-2022-31164: Tovy is a a staff management system for Roblox groups. A vulnera
 
 ## Description
 
-A product requires authentication, but the product has an alternate path or channel that does not require authentication.
+The product requires authentication, but the product has an alternate path or channel that does not require authentication.
 
 ## Observed Examples
 

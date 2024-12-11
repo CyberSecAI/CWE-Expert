@@ -56,15 +56,7 @@ A trust boundary can be thought of as line drawn through a program. On one side 
 
 ## Description
 
-The product deserializes untrusted data without sufficiently verifying that the resulting data will be valid.
-
-It is often convenient to serialize objects for communication or to save them for later use. However, deserialized data or code can often be modified without using the provided accessor functions if it does not use cryptography to protect itself. Furthermore, any cryptography would still be client-side security -- which is a dangerous security assumption.
-
-
-Data that is untrusted can not be trusted to be well-formed.
-
-
-When developers place no restrictions on "gadget chains," or series of instances and method invocations that can self-execute during the deserialization process (i.e., before the object is returned to the caller), it is sometimes possible for attackers to leverage them to perform unauthorized actions, like generating a shell.
+The product deserializes untrusted data without sufficiently ensuring that the resulting data will be valid.
 
 Serialization and deserialization refer to the process of taking program-internal object-related data, packaging it in a way that allows the data to be externally stored or transferred ("serialization"), then extracting the serialized data to reconstruct the original object ("deserialization").
 
@@ -520,17 +512,7 @@ Accessible test applications can pose a variety of security risks. Since develop
 
 ## Description
 
-Information written to log files can be of a sensitive nature and give valuable guidance to an attacker or expose sensitive user information.
-
-While logging all information may be helpful during development stages, it is important that logging levels be set appropriately before a product ships so that sensitive user data and system information are not accidentally exposed to potential attackers.
-
-
-Different log files may be produced and stored for:
-
-
-  - Server log files (e.g. server.log). This can give information on whatever application left the file. Usually this can give full path names and system information, and sometimes usernames and passwords.
-
-  - log files that are used for debugging
+The product writes sensitive information to a log file.
 
 ## Observed Examples
 
