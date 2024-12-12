@@ -1,6 +1,13 @@
 # CWE-Expert
 
-A CWE-Expert can be built for free in a browser in less than 1 minute using the instruction and CWE Corpus files provided here.
+💁 A CWE-Expert can be built for free in a browser in less than 1 minute using the instruction and CWE Corpus files provided here.
+
+You can ask your CWE-Expert 
+- any questions about CWEs
+- to assign CWEs to vulnerability descriptions
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAWJjYCpudE/0.jpg)](https://www.youtube.com/watch?v=DAWJjYCpudE)
+
 
 This repo contains
 
