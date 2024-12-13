@@ -11,7 +11,7 @@ You can ask your CWE-Expert
 - [Youtube video](https://www.youtube.com/watch?v=DAWJjYCpudE) showing general CWE questions, and CWE assignment for several CVEs
   
   [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAWJjYCpudE/0.jpg)](https://www.youtube.com/watch?v=DAWJjYCpudE)
-- [Some nuanced CWE assignments](./CVE_assignments.md)
+- [Some nuanced CWE assignments](./prompts/CVE_assignments.md)
 
 
 This repo contains
