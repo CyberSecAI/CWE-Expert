@@ -6,7 +6,12 @@ You can ask your CWE-Expert
 - any questions about CWEs
 - to assign CWEs to vulnerability descriptions
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAWJjYCpudE/0.jpg)](https://www.youtube.com/watch?v=DAWJjYCpudE)
+**Demos**
+
+- [Youtube video](https://www.youtube.com/watch?v=DAWJjYCpudE) showing general CWE questions, and CWE assignment for several CVEs
+  
+  [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DAWJjYCpudE/0.jpg)](https://www.youtube.com/watch?v=DAWJjYCpudE)
+- [Some nuanced CWE assignments](./CVE_assignments.md)
 
 
 This repo contains
